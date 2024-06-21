@@ -1,0 +1,100 @@
+﻿<Window x:Class="Digidentapp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Digidentapp"
+        mc:Ignorable="d"
+        Title="DIGIDENT" Height="800" Width="1000">
+    <Grid Background="#ADD8E6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header with Home and Login Buttons and DIGIDENT in the middle -->
+        <Grid Background="#ADD8E6" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2">
+                <Button Content="Home" Width="75" Margin="10" />
+                <Button Content="Login" Width="75" Margin="10" />
+            </StackPanel>
+
+            <TextBlock Text="DIGIDENT" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="0,10"/>
+        </Grid>
+
+        <!-- Registration Form -->
+        <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="400">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Registration Form Title -->
+            <TextBlock Text="Registration" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,20" Grid.Row="0" Grid.ColumnSpan="2"/>
+
+            <!-- Registration Form Fields -->
+            <TextBlock Text="Email:" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Margin="0,10" />
+            <TextBox x:Name="EmailTextBox" Margin="0,10" Grid.Row="1" Grid.Column="1" GotFocus="EmailTextBox_GotFocus"/>
+            <TextBlock x:Name="EmailErrorText" Foreground="Red" VerticalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="2" Margin="5,0"/>
+
+            <TextBlock Text="Password:" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0" Margin="0,10"/>
+            <PasswordBox x:Name="PasswordBox" Margin="0,10" Grid.Row="3" Grid.Column="1" GotFocus="PasswordBox_GotFocus"/>
+            <TextBlock x:Name="PasswordErrorText" Foreground="Red" VerticalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="2" Margin="0,5"/>
+
+            <TextBlock Text="Confirm Password:" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0" Margin="0,10"/>
+            <PasswordBox x:Name="ConfirmPasswordBox" Margin="0,10" Grid.Row="5" Grid.Column="1" GotFocus="ConfirmPasswordBox_GotFocus"/>
+            <TextBlock x:Name="ConfirmPasswordErrorText" Foreground="Red" VerticalAlignment="Center" Grid.Row="6" Grid.ColumnSpan="2" Margin="0,5"/>
+
+            <TextBlock Text="First Name:" VerticalAlignment="Center" Grid.Row="7" Grid.Column="0" Margin="0,10"/>
+            <TextBox x:Name="FirstNameTextBox" Margin="0,10" Grid.Row="7" Grid.Column="1"/>
+            <TextBlock x:Name="FirstNameErrorText" Foreground="Red" VerticalAlignment="Center" Grid.Row="8" Grid.ColumnSpan="2" Margin="0,5"/>
+
+            <TextBlock Text="Last Name:" VerticalAlignment="Center" Grid.Row="9" Grid.Column="0" Margin="0,10"/>
+            <TextBox x:Name="LastNameTextBox" Margin="0,10" Grid.Row="9" Grid.Column="1"/>
+            <TextBlock x:Name="LastNameErrorText" Foreground="Red" VerticalAlignment="Center" Grid.Row="10" Grid.ColumnSpan="2" Margin="0,5"/>
+
+            <TextBlock Text="Date of Birth:" VerticalAlignment="Center" Grid.Row="11" Grid.Column="0" Margin="0,10"/>
+            <DatePicker x:Name="DateOfBirthPicker" Margin="0,10" Grid.Row="11" Grid.Column="1"/>
+            <TextBlock x:Name="DateOfBirthErrorText" Foreground="Red" VerticalAlignment="Center" Grid.Row="12" Grid.ColumnSpan="2" Margin="0,5"/>
+
+            <TextBlock Text="Address:" VerticalAlignment="Center" Grid.Row="14" Grid.Column="0" Margin="0,10"/>
+            <TextBox x:Name="AddressTextBox" Margin="0,10" Grid.Row="14" Grid.Column="1"/>
+            <TextBlock x:Name="AddressErrorText" Foreground="Red" VerticalAlignment="Center" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,5"/>
+
+            <TextBlock Text="Phone Number:" VerticalAlignment="Center" Grid.Row="16" Grid.Column="0" Margin="0,10"/>
+            <TextBox x:Name="PhoneNumberTextBox" Margin="0,10" Grid.Row="16" Grid.Column="1"/>
+            <TextBlock x:Name="PhoneNumberErrorText" Foreground="Red" VerticalAlignment="Center" Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,5"/>
+
+            <Button Content="Submit" Width="100" Margin="0,10,0,0" HorizontalAlignment="Center" Grid.Row="18" Grid.ColumnSpan="2" Click="SubmitButton_Click"/>
+
+        </Grid>
+    </Grid>
+</Window>
