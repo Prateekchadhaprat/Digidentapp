@@ -37,8 +37,10 @@ namespace DocREpMan
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             ValidateEmail();
-            //ValidatePassword();
-            //ValidateConfirmPassword();
+            // Call other validation methods...
+            ValidateEmail();
+            ValidatePassword();
+            ValidateConfirmPassword();
             ValidateFirstName();
             ValidateLastName();
             ValidateDateOfBirth();
@@ -65,18 +67,27 @@ namespace DocREpMan
             DateTime dateOfBirth = DateOfBirthPicker.SelectedDate ?? DateTime.MinValue;
             string address = AddressTextBox.Text;
             string phoneNumber = PhoneNumberTextBox.Text;
-            string role = ((ComboBoxItem)jobComboBox.SelectedItem).Content.ToString();
-            string licensenumber = role == "Dentist" ? jobTextBox.Text : null;
+            string role = ((ComboBoxItem)jobComboBox.SelectedItem)?.Content?.ToString() ?? string.Empty;
+            string? licenseNumber = role == "Dentist" ? jobTextBox?.Text : null;
 
+            MessageBox.Show($"Email: {email}\nRole: {role}\nLicenseNumber: {licenseNumber}");
+
+            string storedProcedureName = role switch
+            {
+                "Dentist" => "InsertDentist",
+                "Customer representatives" => "InsertCustomerRepresentative",
+                "Manager" => "InsertManager",
+                _ => throw new InvalidOperationException("Unsupported role")
+            };
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("InsertDoctor", connection))
+                    using (SqlCommand command = new SqlCommand(storedProcedureName, connection))
                     {
-                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.CommandType = CommandType.StoredProcedure;
 
                         command.Parameters.AddWithValue("@Email", email);
                         command.Parameters.AddWithValue("@Password", password);
@@ -85,30 +96,35 @@ namespace DocREpMan
                         command.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
                         command.Parameters.AddWithValue("@Address", address);
                         command.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
-                        command.Parameters.AddWithValue("@Role", role);
-                        if (role == "Dentist" && !string.IsNullOrEmpty(licensenumber))
+
+                        if (role == "Dentist" && !string.IsNullOrEmpty(licenseNumber))
                         {
-                            command.Parameters.AddWithValue("@LicenseNumber", licensenumber);
+                            command.Parameters.AddWithValue("@LicenseNumber", licenseNumber);
                         }
 
                         int rowsAffected = command.ExecuteNonQuery();
 
-                        if (rowsAffected > 0)
+                        // Log or show the number of rows affected
+                       // MessageBox.Show($"Rows affected: {rowsAffected}");
+
+                        if (rowsAffected > 0 || rowsAffected == -1) // Handle special case where rowsAffected might be -1
                         {
                             MessageBox.Show("User registered successfully!");
                         }
                         else
                         {
-                            MessageBox.Show("User registration failed.");
+                            MessageBox.Show("User registration failed. No rows were affected.");
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
+                    MessageBox.Show($"An error occurred: {ex.Message}\nStack Trace: {ex.StackTrace}");
                 }
             }
         }
+
+
 
         private void EmailTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
