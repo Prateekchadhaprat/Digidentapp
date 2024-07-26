@@ -1,8 +1,8 @@
-﻿<Application x:Class="Digidentapp.App"
+﻿<Application x:Class="admin_dashboard.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Digidentapp"
-             StartupUri="DocREpMan.xaml">
+             xmlns:local="clr-namespace:admin_dashboard"
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
          
     </Application.Resources>
