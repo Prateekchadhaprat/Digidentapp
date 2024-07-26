@@ -36,16 +36,16 @@ namespace DocREpMan
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            ValidateEmail();
+            //ValidateEmail();
             // Call other validation methods...
-            ValidateEmail();
-            ValidatePassword();
-            ValidateConfirmPassword();
-            ValidateFirstName();
-            ValidateLastName();
-            ValidateDateOfBirth();
-            ValidateAddress();
-            ValidatePhoneNumber();
+            //ValidateEmail();
+            //ValidatePassword();
+            //ValidateConfirmPassword();
+            //ValidateFirstName();
+            //ValidateLastName();
+            //ValidateDateOfBirth();
+            //ValidateAddress();
+            //ValidatePhoneNumber();
 
             if (!string.IsNullOrEmpty(EmailErrorText.Text) ||
                 !string.IsNullOrEmpty(PasswordErrorText.Text) ||

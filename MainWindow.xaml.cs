@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DocREpMan;
 
-namespace admin_dashboard
+namespace Digidentapp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -24,5 +25,12 @@ namespace admin_dashboard
         {
             InitializeComponent();
         }
+        private void RegistrationButton_Click(object sender, RoutedEventArgs e)
+        {
+            DocREpMan.MainWindow docREpManWindow = new DocREpMan.MainWindow();
+            docREpManWindow.Show();
+            this.Close();  // Optionally close the current window
+        }
     }
+
 }
